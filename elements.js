@@ -260,9 +260,6 @@ for (i = 0; i <= LARGEST_POSSIBLE_NUMBER_OF_SHELLS; i++) {
         let innerCount = 0
         do {
           e = e - possibleElectronsInOutermostSubshell[innerCount]
-          console.log("Removed " + possibleElectronsInOutermostSubshell[innerCount])
-          console.log("Electrons: " +e)
-          
           innerCount++
         } while (innerCount <= outerCount && e > 0)
         outerCount++
