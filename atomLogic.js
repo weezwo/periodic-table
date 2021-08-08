@@ -11,6 +11,7 @@ for (i = 0; i <= LARGEST_POSSIBLE_NUMBER_OF_SHELLS; i++) {
 function Atom(protons) {
   this.atomicNumber = protons;
   this.name =  ELEMENT_NAMES[this.atomicNumber - 1]
+  this.elementalSymbol = ELEMENTAL_SYMBOLS[this.atomicNumber - 1]
 
   // Pauli exclusionary magic go brrrr
   let e = this.atomicNumber
