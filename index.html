@@ -21,6 +21,10 @@
       const windowWidth = window.innerWidth
       const windowHeight = window.innerHeight
      
+      function calculateFill() {
+        return 'white'
+      }
+
       let stage = new Konva.Stage({
         container: 'table',
         width: windowWidth,
@@ -32,23 +36,26 @@
       elements.forEach(e => {
         // individual element box
         //group
+        const boxWidth = 100
+        const boxHeight = 120
+
         let elementBox = new Konva.Group({
-          x: 100 * e.atomicNumber,
+          x: boxWidth * e.atomicNumber, // boxWidth * groupNumber !! 
           y: 100
         })
         // surrounding box
         let outerBox = new Konva.Rect({
-          width: 100,
-          height: 120,
+          width: boxWidth,
+          height: boxHeight,
           stroke: 'black',
-          strokeWidth: 4
+          strokeWidth: 4,
+          fill: calculateFill()
         })
 
         // atomic number
         let atomicNumber  = new Konva.Text({
           x: 10,
           y: 10,
-          //width: 100,
           text: e.atomicNumber,
           align: 'left',
           fontSize: 14,
