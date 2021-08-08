@@ -12,6 +12,7 @@ function Atom(protons) {
   this.atomicNumber = protons;
   this.name =  ELEMENT_NAMES[this.atomicNumber - 1]
 
+  // Pauli exclusionary magic go brrrr
   let e = this.atomicNumber
   let outerCount = 0
   let totalSubshells = 0
