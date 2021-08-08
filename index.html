@@ -1,9 +1,75 @@
 <html>
   <head></head>
   <body>
-  <script src="https://unpkg.com/konva@8/konva.min.js"></script>
-  <script src="./elements.js"></script>
-  <script src="./atomLogic.js"></script>
+    <div id="table"></div>
+    <script src="https://unpkg.com/konva@8/konva.min.js"></script>
+    <script src="./elements.js"></script>
+    <script src="./atomLogic.js"></script>
+
+    <script>
+      console.log('hi :)')
+      
+      let elements = []
+      function createElements() {
+        for(i=0; i < ELEMENTAL_SYMBOLS.length; i++) {
+          elements.push(new Atom(i+1))
+        }
+        return "Elements created."
+      }
+      createElements()
+
+      const windowWidth = window.innerWidth
+      const windowHeight = window.innerHeight
+     
+      let stage = new Konva.Stage({
+        container: 'table',
+        width: windowWidth,
+        height: windowHeight
+      })
+
+      let layer = new Konva.Layer()
+
+      // individual element box
+      //group
+      let elementBox = new Konva.Group({
+        x: 100,
+        y: 100
+      })
+      // surrounding box
+      let outerBox = new Konva.Rect({
+        width: 100,
+        height: 120,
+        stroke: 'black',
+        strokeWidth: 4
+      })
+      // symbol
+      let elementalSymbol = new Konva.Text({
+        y: 25,
+        width: 100,
+        text: elements[0].elementalSymbol,
+        align: 'center',
+        fontSize: 48,
+        fill: 'black'
+      })
+
+      // name
+      let elementalName = new Konva.Text({
+        y: 80,
+        width: 100,
+        text: elements[0].name,
+        align: 'center',
+        fontSize: 16,
+        fill: 'black'
+      })
+
+
+      // render box
+      elementBox.add(outerBox)
+      elementBox.add(elementalSymbol)
+      elementBox.add(elementalName)
+      layer.add(elementBox)
+      stage.add(layer)
+    </script>
   </body>
   
   
