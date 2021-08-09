@@ -1,6 +1,6 @@
 
 
-const possibleElectronsInSubshell = [2, 2, 6, 2, 6, 2, 10, 6, 2, 10, 6, 2, 14, 10, 6, 2, 14, 10]
+const possibleElectronsInSubshell = [2, 2, 6, 2, 6, 2, 10, 6, 2, 10, 6, 2, 14, 10, 6, 2, 14, 10, 6]
 
  
 function Atom(protons) {
@@ -24,20 +24,27 @@ function Atom(protons) {
   this.totalSubshells = totalSubshells
   
   this.valenceShellCapacity = possibleElectronsInSubshell[this.totalSubshells - 1]
+  this.valenceShellType = determineValenceShellType(this)
   this.group = determineGroup(this) 
+  this.period = determinePeriod(this)
+}
+
+function determineValenceShellType(a) {
+  if(a.valenceShellCapacity == 2) return 's'
+  else if(a.valenceShellCapacity == 6) return 'p'
+  else if(a.valenceShellCapacity == 10) return 'd'
+  else if(a.valenceShellCapacity == 14) return 'f'
 }
 
 function determineGroup(a) {
   
-  const hasTypeSValenceShell = a.valenceShellCapacity == 2 
-  const hasTypePValenceShell =  a.valenceShellCapacity == 6 
-  const isTransitionMetal =  a.valenceShellCapacity == 10
-  const hasTypeDValenceShell = a.valenceShellCapacity == 14
-
-  if (a.valence == 1 && hasTypeSValenceShell) return 1
-  else if(a.valence == 0 && hasTypeSValenceShell && a.totalSubshells > 1)  return 2
-  else if(isTransitionMetal || hasTypeDValenceShell) return (a.valenceShellCapacity - a.valence) + 2
-  else if(hasTypePValenceShell) return (a.valenceShellCapacity - a.valence + 12)
+  if (a.valence == 1 && a.valenceShellType == 's') return 1
+  else if(a.valence == 0 && a.valenceShellType == 's' && a.totalSubshells > 1)  return 2
+  else if(a.valenceShellType == 'd' || a.valenceShellType == 'f') return (a.valenceShellCapacity - a.valence) + 2
+  else if(a.valenceShellType == 'p') return (a.valenceShellCapacity - a.valence + 12)
   else if(a.atomicNumber == 2) return 18 // Helium 
 }
 
+function determinePeriod(a) {
+  return 0
+}
