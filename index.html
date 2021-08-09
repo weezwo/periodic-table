@@ -21,8 +21,12 @@
       const windowWidth = window.innerWidth
       const windowHeight = window.innerHeight
      
-      function calculateFill() {
-        return 'white'
+      function calculateFill(element) {
+        const colors = ["pink", "yellow", "blue", "green"]
+        if (element.valenceShellCapacity == 2) return colors[0]
+        if (element.valenceShellCapacity == 6) return colors[1]
+        if (element.valenceShellCapacity == 10) return colors[2]
+        if (element.valenceShellCapacity == 14) return colors[3]
       }
 
       let stage = new Konva.Stage({
@@ -49,7 +53,7 @@
           height: boxHeight,
           stroke: 'black',
           strokeWidth: 4,
-          fill: calculateFill()
+          fill: calculateFill(e)
         })
 
         // atomic number
