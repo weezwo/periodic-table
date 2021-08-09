@@ -1,11 +1,6 @@
 
-const LARGEST_POSSIBLE_NUMBER_OF_SHELLS = 5
 
-let possibleElectronsInOutermostSubshell = []
-
-for (i = 0; i <= LARGEST_POSSIBLE_NUMBER_OF_SHELLS; i++) {
-   possibleElectronsInOutermostSubshell.push(4 * i + 2) 
-}
+const possibleElectronsInSubshell = [2, 2, 6, 2, 6, 2, 10, 6, 2, 10, 6, 2, 14, 10, 6, 2, 14, 10]
 
  
 function Atom(protons) {
@@ -15,20 +10,34 @@ function Atom(protons) {
 
   // Pauli exclusionary magic go brrrr
   let e = this.atomicNumber
-  let outerCount = 0
+
   let totalSubshells = 0
+
+  // get valence and number of subshells
   do {
-    let innerCount = 0
-    do {
-      e = e - possibleElectronsInOutermostSubshell[innerCount]
-      innerCount++
-      totalSubshells++
-    } while (innerCount <= outerCount && e > 0)
-    outerCount++
-   
+    e = e - possibleElectronsInSubshell[totalSubshells]
+    totalSubshells++ 
   } while (e > 0)
   if (e == 0) this.valence = 0
   else this.valence = -e
+  
   this.totalSubshells = totalSubshells
+  
+  this.valenceShellCapacity = possibleElectronsInSubshell[this.totalSubshells - 1]
+  this.group = determineGroup(this) 
+}
+
+function determineGroup(a) {
+  
+  const hasTypeSValenceShell = a.valenceShellCapacity == 2 
+  const hasTypePValenceShell =  a.valenceShellCapacity == 6 
+  const isTransitionMetal =  a.valenceShellCapacity == 10
+  const hasTypeDValenceShell = a.valenceShellCapacity == 14
+
+  if (a.valence == 1 && hasTypeSValenceShell) return 1
+  else if(a.valence == 0 && hasTypeSValenceShell && a.totalSubshells > 1)  return 2
+  else if(isTransitionMetal || hasTypeDValenceShell) return (a.valenceShellCapacity - a.valence) + 2
+  else if(hasTypePValenceShell) return (a.valenceShellCapacity - a.valence + 12)
+  else if(a.atomicNumber == 2) return 18 // Helium 
 }
 
