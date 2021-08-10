@@ -11,11 +11,11 @@ calculated from scratch at runtime using only:
 
 A puzzler at heart, I undertook this project in hopes that I might learn a
 thing or two about how the periodic table works and why it looks the way it
-does. You might know that the periodic table of the
-elements is comprised of **groups** (represented by the columns of the table)
-and **periods** (represented by its rows). Each one of these groups and periods
-tells a story about the behavior of the elements inside them. In fact, 19th and
-20th century chemists used "gaps" in the table to predict the existence of
+does. You might know that the periodic table of the elements is comprised of
+**groups** (represented by the columns of the table) and **periods**
+(represented by its rows). Each one of these groups and periods tells a story
+about the behavior of the elements inside them. In fact, 19th and 20th century
+chemists used "gaps" in the table to predict the existence of
 theretofore undiscovered elements. It's wild stuff!  
 
 But what is even wilder is that this behavior is predictable based upon an
