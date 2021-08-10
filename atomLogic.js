@@ -10,17 +10,28 @@ function Atom(protons) {
 
   // Pauli exclusionary magic go brrrr
   let e = this.atomicNumber
-
+  
+  this.subshells = []
+  this.totalShells = 0
   let totalSubshells = 0
 
-  // get valence and number of subshells
+  // get valence and subshell info
   do {
-    e = e - possibleElectronsInSubshell[totalSubshells]
-    totalSubshells++ 
+   let prevE = e
+   e = e - possibleElectronsInSubshell[totalSubshells]
+  
+   // track number of s subshells -- and therefore shells -- for period calcs
+   if (possibleElectronsInSubshell[totalSubshells] == 2) this.totalShells++
+   // populate array of subshell contents
+   if (e > 0) this.subshells.push(possibleElectronsInSubshell[totalSubshells])
+   else this.subshells.push(prevE) 
+    
+    totalSubshells++
+    
   } while (e > 0)
   if (e == 0) this.valence = 0
   else this.valence = -e
-  
+
   this.totalSubshells = totalSubshells
   
   this.valenceShellCapacity = possibleElectronsInSubshell[this.totalSubshells - 1]
@@ -46,5 +57,6 @@ function determineGroup(a) {
 }
 
 function determinePeriod(a) {
-  return 0
+  if (a.valenceShellType == 'f') return 8
+  else return a.totalShells
 }
