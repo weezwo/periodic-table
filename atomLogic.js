@@ -57,6 +57,7 @@ function determineGroup(a) {
 }
 
 function determinePeriod(a) {
+  // pop lanthanides/actinides down to their typical spot and returns the total number of shells for everything else
   if (a.valenceShellType == 'f') return a.totalShells + 3
   else return a.totalShells
 }
