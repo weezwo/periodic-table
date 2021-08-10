@@ -19,10 +19,14 @@
       createElements()
 
       const windowWidth = window.innerWidth
-      const windowHeight = window.innerHeight
-     
+      
+      const boxWidth = windowWidth / 20//50
+      const boxHeight = boxWidth * 1.2  
+
+      const windowHeight = boxHeight * 11
+
       function calculateFill(element) {
-        const colors = ["pink", "yellow", "blue", "green"]
+        const colors = ["#AA8274", "#A9714B", "#81A2B1", "#495A49"]
         if (element.valenceShellCapacity == 2) return colors[0]
         if (element.valenceShellCapacity == 6) return colors[1]
         if (element.valenceShellCapacity == 10) return colors[2]
@@ -37,66 +41,61 @@
 
       let layer = new Konva.Layer()
 
+      // create element boxes
       elements.forEach(e => {
-        // individual element box
         //group
-        const boxWidth = 100
-        const boxHeight = 120
-
-        let elementBox = new Konva.Group({
-          x: boxWidth * e.atomicNumber, // boxWidth * groupNumber !! 
-          y: 100
-        })
+       let elementBox = new Konva.Group({
+         x: boxWidth * e.group,
+         y: boxHeight * e.period - boxHeight / 2
+       })
         // surrounding box
-        let outerBox = new Konva.Rect({
-          width: boxWidth,
-          height: boxHeight,
-          stroke: 'black',
-          strokeWidth: 4,
-          fill: calculateFill(e)
-        })
+       let outerBox = new Konva.Rect({
+         width: boxWidth,
+         height: boxHeight,
+         stroke: 'white',
+         strokeWidth: boxWidth / 25,
+         fill: calculateFill(e)
+       })
 
         // atomic number
-        let atomicNumber  = new Konva.Text({
-          x: 12,
-          y: 10,
-          text: e.atomicNumber,
-          align: 'left',
-          fontSize: 14,
-          fill: 'black'
-        })
+       let atomicNumber  = new Konva.Text({
+         x: boxWidth / 10,
+         y: boxHeight / 10,
+         text: e.atomicNumber,
+         align: 'left',
+         fontSize: boxWidth / 10 + 3,
+         fill: 'white'
+       })
 
         // symbol
-        let elementalSymbol = new Konva.Text({
-          y: 30,
-          width: 100,
-          text: e.elementalSymbol,
-          align: 'center',
-          fontSize: 55,
-          fill: 'black'
-        })
+       let elementalSymbol = new Konva.Text({
+         y: boxHeight / 3,
+         width: boxWidth,
+         text: e.elementalSymbol,
+         align: 'center',
+         fontSize: boxHeight / 3,
+         fill: 'white'
+       })
 
         // name
-        let elementalName = new Konva.Text({
-          y: 85,
-          width: 100,
-          text: e.name,
-          align: 'center',
-          fontSize: 16,
-          fill: 'black'
-        })
+       let elementalName = new Konva.Text({
+         y: boxHeight * .7,
+         width: boxWidth,
+         text: e.name,
+         align: 'center',
+         fontSize: boxWidth / 10 + 4,
+         fill: 'white'
+       })
         // end individual element box
- 
-        elementBox.add(outerBox)
-        elementBox.add(atomicNumber)
-        elementBox.add(elementalSymbol)
-        elementBox.add(elementalName)
-        layer.add(elementBox)
-        stage.add(layer)
 
-
-      
-      })
+       elementBox.add(outerBox)
+       elementBox.add(atomicNumber)
+       elementBox.add(elementalSymbol)
+       elementBox.add(elementalName)
+       layer.add(elementBox)
+       stage.add(layer)
+   
+     })
     </script>
   </body>
   
