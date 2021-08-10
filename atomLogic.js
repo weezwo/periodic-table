@@ -57,6 +57,6 @@ function determineGroup(a) {
 }
 
 function determinePeriod(a) {
-  if (a.valenceShellType == 'f') return 8
+  if (a.valenceShellType == 'f') return a.totalShells + 3
   else return a.totalShells
 }
