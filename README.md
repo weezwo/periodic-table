@@ -1,7 +1,7 @@
 # Pure JavaScript Periodic Table of the Elements
 
-This repo contains a reverse-engineered implementation of the periodic table we know and love,
-calculated from scratch at runtime using only:
+This repo contains a reverse-engineered implementation of the periodic table we
+know and love, calculated from scratch at runtime using only:
 
 1. An array each of elemental names and elemental symbols
 2. An array of the possible number of electrons in each successive electronic
