@@ -19,7 +19,9 @@ tells a story about the behavior of the elements inside them. In fact, 19th and
 theretofore undiscovered elements. It's wild stuff!  
 
 But what is even wilder is that this behavior is predictable based upon an
-element's atomic number and the laws that govern electron configuration. With a
+element's atomic number and the laws that govern electron configuration. It
+makes sense, right? The only thing that really differs between each atomic
+element is the number of protons, neutrons, and electrons. With a
 bit of experimentation, I realized that an element's group is determined by a
 combination of the type of its outermost (or valence) electronic subshell and
 the number of electrons in that subshell. Meanwhile, the period can be
