@@ -26,11 +26,16 @@ the number of electrons in that subshell. Meanwhile, the period can be
 calcuated simply by summing the total number of shells in the atomic element's
 electron cloud. This gets a bit fuzzy when it comes to the actinide and
 lanthanide sets (you know, the elements that hang out at the bottom), but only
-a little bit and only because these elements have an f-type valence shell,
+a little bit and only because these elements have an f-type valence subshell,
 bigger than any other and whose existence was not accounted for at the time the
 table was developed. Attempts have been made to develop a table that allows
 these elements to sit in line with their brethren, but it seems that the one
 we've got is here to stay, too elegant to die, at least for today.
+
+Knowing all of this, an element's period and group can be calculated at the
+time of an element object's instantiation. What you see here is not really a
+"table" of rows and columns, but a series of 118 uniquely placed elemental
+objects.
 
 ## To do
 - Onsite explanation and tutorials
